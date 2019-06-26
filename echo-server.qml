@@ -30,7 +30,10 @@ ApplicationWindow {
                 }
             });
         }
-        onErrorStringChanged: logArea.postInfo(qsTr("Server error: %1").arg(errorString))
+        onErrorStringChanged: {
+            logArea.postInfo(qsTr("Server error: %1").arg(errorString))
+            console.log(qsTr("Server error: %1").arg(errorString))
+        }
         // ToDo: test for errors -/-
         Component.onCompleted: logArea.postInfo(qsTr("Server is listening at %1").arg(url))
     }
